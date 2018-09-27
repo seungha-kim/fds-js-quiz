@@ -2,6 +2,57 @@
 
 두 수를 입력받아 큰 수를 반환하는 함수를 작성하세요.
 
+```js
+function larger(x, y) {
+  const a = x
+  const b = y
+  let c;
+
+  // a가 크면 a를 c에 넣고, 아니면 b를 c에 넣는다.
+
+  if (a > b) {
+    c = a
+  } else {
+    c = b
+  }
+  return c
+}
+```
+
+```js
+function larger(x, y) {
+  let c;
+
+  // a가 크면 a를 c에 넣고, 아니면 b를 c에 넣는다.
+
+  if (x > y) {
+    c = x
+  } else {
+    c = y
+  }
+  return c
+}
+```
+
+```js
+function larger(x, y) {
+  // a가 크면 a를 c에 넣고, 아니면 b를 c에 넣는다.
+
+  if (x > y) {
+    return x
+  } else {
+    return y
+  }
+}
+```
+
+```js
+function larger(x, y) {
+  // a가 크면 a를 c에 넣고, 아니면 b를 c에 넣는다.
+  return x > y ? x : y;
+}
+```
+
 ### 문제 2
 
 세 수를 입력받아 그 곱이 양수이면 `true`, 0 혹은 음수이면 `false`, 둘 다 아니면 에러를 발생시키는 함수를 작성하세요.
@@ -10,6 +61,19 @@
 
 ```js
 throw new Error('입력값이 잘못되었습니다.');
+```
+
+
+```js
+function isPositive(x, y, z) {
+  if (x * y * z > 0) {
+    return true
+  } else if (x * y * z <= 0) {
+    return false
+  } else {
+    throw new Error('입력값이 잘못되었습니다.');
+  }
+}
 ```
 
 ### 문제 3
@@ -26,9 +90,38 @@ limit(3, 7, 11); -> 7
 limit(3, 7, 0); -> 3
 ```
 
+```js
+function limit(min, max, input) {
+  if (min > input) {
+    return min
+  } else if (max < input) {
+    return max
+  } else {
+    return input
+  }
+}
+```
+
 ### 문제 4
 
 어떤 정수가 짝수인지 홀수인지 출력하는 함수를 작성하세요. 이를 이용해서, 1부터 20까지의 수가 각각 짝수인지 홀수인지 출력하는 프로그램을 작성하세요.
+
+```js
+
+function evenOrOdd(x) {
+  // 만약 x가 짝수면 'x: 짝수' 라고 출력
+  if (x % 2 === 0) {
+    console.log('짝수 ' + x + ' 짝수') // 짝수 2 짝수
+  } else {
+    console.log(`홀수 ${x} 홀수`)
+  }
+  // 아니면 'x: 홀수' 라고 출력
+}
+
+for (let i = 0; i < 20; i++) {
+  evenOrOdd(i + 1)
+}
+```
 
 ### 문제 5
 
