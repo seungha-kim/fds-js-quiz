@@ -89,6 +89,19 @@ subString('햄버거');
 // 결과: ['햄', '햄버', '햄버거', '버', '버거', '거']
 ```
 
+```js
+const isPalindrome = (input) => {
+  for (let i = 0; i <= input.length / 2 - 1; i++) {
+    const left = i;
+    const right = input.length - 1 - i;
+    if (input[left] !== input[right]) {
+      return false
+    }
+  }
+  return true
+}
+```
+
 ### 문제 7
 
 문자열을 입력받아, 해당 문자열에서 중복된 문자가 제거된 새로운 문자열을 반환하는 함수를 작성하세요.
@@ -105,6 +118,40 @@ removeDuplicates('bartender'); -> 'bartend'
 
 - 루프로 먼저 풀어보세요.
 - `split` 메소드를 이용해서 풀어보세요.
+
+```js
+const removeId = (input) => {
+  let seen = false
+  let memory = ''
+  for (let i = 0; i < input.length; i++) {
+    // 내가 지금 보고 있는 글자가 '@' 이면
+    if (input[i] === '@') {
+      // seen의 값을 true로 바꾼다.
+      seen = true
+    }
+
+    // seen이 true이면
+    if (seen) {
+      // 내가 지금 보고 있는 글자를 그대로 memory에 덧붙인다.
+      memory += input[i]  
+    } else {
+      // 아니면, 별표를 대신 덧붙인다.
+      memory += '*'
+    }
+  }
+  // 변환한 결과를 반환한다.
+  return memory
+}
+
+const removeId2 = (input) => {
+  // '@'을 기준으로 쪼갠 후
+  const splitted = input.split('@')
+  // id 부분과 같은 길이를 갖는 별표 문자열을 만든다.
+  const stars = '*'.repeat(splitted[0].length)
+  // 별표를 @, 도메인 부분과 이어붙인 후 반환한다.
+  return stars + '@' + splitted[1]
+}
+```
 
 ### 문제 9
 

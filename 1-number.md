@@ -173,6 +173,20 @@ function print(x) {
 
 2 이상의 자연수를 입력받아, 그 수가 소수인지 아닌지를 판별하는 함수를 작성하세요.
 
+```js
+function isPrime(x) {
+  // 소수: 1과 자기자신밖에 약수가 없는 수
+  // -> 1과 자기자신이 아닌 약수가 하나라도 있으면 소수가 아니다.
+  for (let i = 2; i < x; i++) {
+    if (x % i === 0) {
+      return false
+    }
+  }
+  return true
+}
+
+```
+
 ### 문제 8
 
 1부터 100까지의 수를 차례대로 출력하되, 자릿수에 3, 6, 9중 하나라도 포함되어 있으면 '짝!'을 대신 출력하는 프로그램을 작성하세요.
@@ -214,6 +228,35 @@ for (let i = 0; i < 100; i++) {
 * * * * *
 ```
 
+```js
+// function print(height) {
+//   for (let i = 0; i < height; i++) {
+//     // 한 줄 출력
+//     let stars = ''
+//     for (let j = 0; j < i + 1; j++) {
+//       // 별 표 하나를 출력
+//       stars += '* '
+//     }
+//     console.log(stars)
+//   }
+// }
+
+// function print(height) {
+//   for (let i = 0; i < height; i++) {
+//     // 한 줄 출력
+//     const stars = '* '.repeat(i + 1)
+//     console.log(stars)
+//   }
+// }
+
+function print(height) {
+  for (let i = 0; i < height; i++) {
+    // 한 줄 출력
+    console.log('* '.repeat(i + 1))
+  }
+}
+```
+
 ### 문제 10
 
 양의 정수를 입력받아, 다음과 같은 패턴의 출력을 하는 함수를 작성하세요.
@@ -243,6 +286,23 @@ for (let i = 0; i < 100; i++) {
   * * *
    * *
     *
+```
+
+```js
+function printLine(height, i) {
+  const n = i + 1;
+  const line = ' '.repeat(height - n) + '* '.repeat(n)
+  console.log(line)
+}
+
+function print(height) {
+  for (let i = 0; i < height; i++) {
+    printLine(height, i)
+  }
+  for (let i = height - 2; i >= 0; i--) {
+    printLine(height, i)
+  }
+}
 ```
 
 ### 문제 11
