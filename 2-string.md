@@ -75,6 +75,23 @@ count('hello')
 countChar('tomato'); -> {t: 2, o: 2, m: 1, a: 1}
 ```
 
+```js
+function countChar(input) {
+  const obj = {}
+  for (let i = 0; i < input.length; i++) {
+    const char = input[i]
+    // 글자를 본적이 없다면 "글자": 1 을 적어준다.
+    if ( !(char in obj) ) {
+      obj[char] = 1
+    } else {
+      // 글자를 본적이 있다면 횟수를 1 증가시켜준다.
+      obj[char]++
+    }
+  }
+  return obj
+}
+```
+
 ### 문제 5
 
 문자열을 입력받아 그 문자열이 회문(palindrome)인지 판별하는 함수를 작성하세요. (회문이란, '토마토', 'never odd or even'과 같이 뒤에서부터 읽어도 똑같이 읽히는 문자열을 말합니다.)
@@ -157,9 +174,70 @@ const removeId2 = (input) => {
 
 문자열을 입력받아, 대문자는 소문자로, 소문자는 대문자로 바꾼 결과를 반환하는 함수를 작성하세요.
 
+```js
+// 배열을 사용하지 않고, 루프를 사용해서 풀기
+function swapCase(input) {
+  let memory = ''
+  for (let i = 0; i < input.length; i++) {
+    if (input[i].toUpperCase() === input[i]) {
+      memory += input[i].toLowerCase()
+    } else {
+      memory += input[i].toUpperCase()
+    }
+  }
+  return memory
+}
+
+swapCase('JavaScript')
+```
+
+```js
+// 배열 메소드를 사용해서 풀기
+const swapCase = input => Array.from(input)
+  .map(c => c.toUpperCase() === c ? c.toLowerCase() : c.toUpperCase())
+  .join('')
+
+swapCase('JavaScript')
+```
+
 ### 문제 10
 
 문자열을 입력받아, 각 단어의 첫 글자를 대문자로 바꾼 결과를 반환하는 함수를 작성하세요. (문자열에 개행이 없다고 가정합니다.)
+
+```js
+// 배열을 사용하지 않고, 루프를 사용해서 풀기
+function capitalize(input) {
+  let seenBlank = true
+  let memory = ''
+
+  for (let i = 0; i < input.length; i++) {
+    if (seenBlank) {
+      memory += input[i].toUpperCase()
+    } else {
+      memory += input[i]
+    }
+
+    if (input[i] === ' ') {
+      seenBlank = true
+    } else {
+      seenBlank = false
+    }
+  }
+
+  return memory
+}
+
+capitalize('i am hungry')
+```
+
+```js
+// 배열 메소드를 사용해서 풀기
+const capitalize = input => input.split(' ')
+  .map(word => word.slice(0, 1).toUpperCase() + word.slice(1))
+  .join(' ')
+
+capitalize('i am hungry')
+```
 
 ### 문제 11
 
