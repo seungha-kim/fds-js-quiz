@@ -11,9 +11,35 @@ range(3, 6); -> [3, 4, 5, 6]
 
 수 타입의 값으로만 이루어진 배열을 입력받아, 그 값들의 합을 구하는 함수를 작성하세요.
 
+```js
+function sum(arr) {
+  let memory = 0
+  for (let i = 0; i < arr.length; i++) {
+    memory += arr[i]
+  }
+  return memory
+}
+
+sum([1, 2, 3]) // -> 6
+```
+
 ### 문제 3
 
 배열을 입력받아, falsy인 요소가 제거된 새 배열을 반환하는 함수를 작성하세요.
+
+```js
+function removeFalsy(arr) {
+  const newArr = []
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i]) {
+      newArr.push(arr[i])
+    }
+  }
+  return newArr
+}
+
+removeFalsy([0, 1, NaN, 3]) // -> [1, 3]
+```
 
 ### 문제 4
 
